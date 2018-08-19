@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "netflix"
+  ],
+  "plugins": [
+    "jest"
+  ],
+  "parserOptions": {},
+  "env": {
+    "es6": true,
+    "jest/globals": true
+  },
+  "globals": {},
+  "rules": {}
+}

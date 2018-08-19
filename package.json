@@ -1,0 +1,29 @@
+{
+  "name": "shucan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomosuzu/ShuCan.git"
+  },
+  "author": "tomoya suzuki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomosuzu/ShuCan/issues"
+  },
+  "homepage": "https://github.com/tomosuzu/ShuCan#readme",
+  "dependencies": {
+    "react": "^16.4.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "8",
+    "eslint": "4.x",
+    "eslint-config-netflix": "^2.0.0",
+    "eslint-plugin-jest": "^21.21.0",
+    "jest": "^23.5.0"
+  }
+}
