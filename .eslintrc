@@ -1,6 +1,7 @@
 {
   "extends": [
-    "netflix"
+    "netflix",
+    "plugin:react/recommended"
   ],
   "plugins": [
     "jest"
@@ -11,5 +12,7 @@
     "jest/globals": true
   },
   "globals": {},
-  "rules": {}
+  "rules": {
+    "class-methods-use-this": "off"
+  }
 }
