@@ -30,7 +30,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', 'jsx'],
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({title : 'ShuCan'}),
   ],
   devtool: 'source-map'
 };
