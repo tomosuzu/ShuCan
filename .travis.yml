@@ -7,6 +7,8 @@ sudo: false
 cache: yarn
 install:
 - npm install -g firebase-tools
+test:
+- yarn test
 after_success:
 - npm i -g firebase-ci
 - firebase deploy
