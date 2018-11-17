@@ -1,19 +1,12 @@
 language: node_js
 node_js:
-- 10
 - node
 dist: trusty
 sudo: false
 cache: yarn
-install:
-- npm install -g firebase-tools
-after_success:
-- npm i -g firebase-ci
-branches:
-  only:
-  - master
 script:
 - echo "Deploy"
+- yarn build
 deploy:
   provider: firebase
   skip_cleanup: true
