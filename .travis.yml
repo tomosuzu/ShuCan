@@ -1,15 +1,26 @@
-language: node_js
-node_js:
-- node
-dist: trusty
-sudo: false
-cache: yarn
-script:
-- echo "Deploy"
-- yarn build
-deploy:
-  provider: firebase
-  skip_cleanup: true
-  token:
-    secure: $FIREBASE_TOKEN
-  project: $FIREBASE_PROJECT
+jobs:
+  include:
+  - stage: test
+    language: node_js
+    node_js:
+    - 10
+    - node
+    dist: trusty
+    sudo: false
+    cache: yarn
+  - stage: deploy
+    language: node_js
+    node_js:
+    - node
+    dist: trusty
+    sudo: false
+    cache: yarn
+    script:
+    - echo "Deploy"
+    - yarn build
+    deploy:
+      provider: firebase
+      skip_cleanup: true
+      token:
+        secure: $FIREBASE_TOKEN
+      project: $FIREBASE_PROJECT
