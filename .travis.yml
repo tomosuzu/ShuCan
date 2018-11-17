@@ -5,3 +5,19 @@ node_js:
 dist: trusty
 sudo: false
 cache: yarn
+install:
+- npm install -g firebase-tools
+after_success:
+- npm i -g firebase-ci
+- firebase deploy
+branches:
+  only:
+  - master
+script:
+- echo "Deploy"
+deploy:
+  provider: firebase
+  skip_cleanup: true
+  token:
+    secure: $FIREBASE_TOKEN
+  project: $FIREBASE_PROJECT
