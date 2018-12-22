@@ -1,10 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import { Hello } from './components/App';
+import store from './store';
+import App from './components/App';
 
 const appNode = document.createElement('div');
 
 document.body.appendChild(appNode);
 
-ReactDOM.render(<Hello compiler="TypeScript" framework="React" /> , appNode);
+ReactDOM.render(
+  <Provider store={store}>
+        <App />
+      </Provider>,
+  appNode);
