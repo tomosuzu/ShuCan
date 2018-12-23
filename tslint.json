@@ -1,9 +1,7 @@
 {
   "extends": ["tslint-config-airbnb", "tslint-react"],
   "rules": {
-    "jsx-no-multiline-js" : false,
-    "jsx-alignment" : false,
-    "jsx-no-lambda": false
+    "jsx-alignment" : false
   },
   "jsRules": []
 }

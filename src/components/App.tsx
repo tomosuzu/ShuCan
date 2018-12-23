@@ -9,17 +9,44 @@ export interface HelloProps {
   actions: ActionDispatcher;
 }
 
-export class Hello extends React.Component<HelloProps, {}> {
+export interface HelloState {
+  title: string;
+}
+
+export class Hello extends React.Component<HelloProps, HelloState> {
+  constructor(props:any) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.save = this.save.bind(this);
+  }
+  public state: HelloState = {
+    title: '',
+  };
+
+  private handleChange(event:any) {
+    this.setState({ title: event.target.value });
+  }
+
+  private save() {
+    this.props.actions.addShucan(this.state.title);
+  }
+
   render() {
     return(
       <div>
         <h1>Welcome to ShuCan</h1>
-        <p>My Shucan is {this.props.value.title}</p>
-        <input
-          type="text"
-          onChange={ (e: React.FormEvent<HTMLInputElement>) => {
-            this.props.actions.addShucan(e.currentTarget.value);
-          } } />
+        <label>
+          Title:
+          {this.state.title}
+          <input
+            type="text"
+            value={this.state.title}
+            onChange={this.handleChange}
+            />
+          {this.props.value.title}
+        </label>
+        <button onClick={this.save}/>
       </div>
     );
   }
