@@ -13,7 +13,7 @@ describe('index', () => {
     actions = {
       addShucan: sinon.spy(),
     };
-    const state: ShucanState = { title: 'hello' };
+    const state: ShucanState = { shucan: [{ title: 'hello' }] };
     wrapper = shallow(<Hello value={state} actions={actions} />);
   });
 

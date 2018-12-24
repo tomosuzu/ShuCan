@@ -16,17 +16,22 @@ export const addShucan = (title: string): AddAction => ({
 
 // reducer
 export interface ShucanState {
-  title: string;
+  shucan: {
+    title: string;
+  }[];
+
 }
 
 export type ShucanActions = AddAction;
 
-const initialState:ShucanState = { title : '' };
+const initialState:ShucanState = { shucan: [] };
 
 function reducer(state: ShucanState = initialState, action: ShucanActions): ShucanState {
   switch (action.type) {
     case ActionNames.ADD:
-      return { title: action.title };
+      const shucan = state.shucan;
+      shucan.push({ title: action.title });
+      return { shucan };
     default:
       return state;
   }

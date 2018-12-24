@@ -44,7 +44,7 @@ export class Hello extends React.Component<HelloProps, HelloState> {
             value={this.state.title}
             onChange={this.handleChange}
             />
-          {this.props.value.title}
+          {this.props.value.shucan.length > 0 && this.props.value.shucan[0].title}
         </label>
         <button onClick={this.save}/>
       </div>
