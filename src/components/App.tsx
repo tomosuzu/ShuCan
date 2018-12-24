@@ -33,6 +33,11 @@ export class Hello extends React.Component<HelloProps, HelloState> {
   }
 
   render() {
+    const list = [];
+    for (const i in this.props.value.shucan) {
+      list.push(<li key={i}>{this.props.value.shucan[i].title}</li>);
+    }
+
     return(
       <div>
         <h1>Welcome to ShuCan</h1>
@@ -44,9 +49,9 @@ export class Hello extends React.Component<HelloProps, HelloState> {
             value={this.state.title}
             onChange={this.handleChange}
             />
-          {this.props.value.shucan.length > 0 && this.props.value.shucan[0].title}
         </label>
         <button onClick={this.save}/>
+        {list}
       </div>
     );
   }

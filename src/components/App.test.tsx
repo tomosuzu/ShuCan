@@ -13,7 +13,7 @@ describe('index', () => {
     actions = {
       addShucan: sinon.spy(),
     };
-    const state: ShucanState = { shucan: [{ title: 'hello' }] };
+    const state: ShucanState = { shucan: [{ title: 'hello1' }, { title: 'hello2' }] };
     wrapper = shallow(<Hello value={state} actions={actions} />);
   });
 
@@ -26,5 +26,9 @@ describe('index', () => {
     wrapper.find('input').first().simulate('change', { target: { value: 'value' } });
     wrapper.find('button').first().simulate('click');
     expect(actions.addShucan.calledWith('value')).toBe(true);
+  });
+
+  test('show Shucan List', () => {
+    expect(wrapper.find('li').length).toBe(2);
   });
 });
