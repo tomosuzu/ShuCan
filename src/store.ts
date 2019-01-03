@@ -1,9 +1,9 @@
 import { createStore, combineReducers, Action } from 'redux';
-import shucan, { ShucanState, ShucanActions } from './components/Shucan';
+import Shucan, { ShucanState, ShucanActions } from './components/Shucan';
 
 export default createStore(
   combineReducers({
-    shucan,
+    Shucan,
   }),
 );
 

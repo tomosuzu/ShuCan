@@ -61,7 +61,7 @@ class ActionDispatcher {
   constructor(private dispatch: (action: ReduxAction) => void) {}
 
   public addShucan(title: string) {
-    this.dispatch(addShucan(title));
+    this.dispatch(addShucan(title, 'day'));
   }
 }
 

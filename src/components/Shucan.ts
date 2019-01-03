@@ -7,10 +7,12 @@ enum ActionNames {
 
 interface AddAction extends Action {
   title: string;
+  repeat: string;
   type: ActionNames.ADD;
 }
-export const addShucan = (title: string): AddAction => ({
+export const addShucan = (title: string, repeat: string): AddAction => ({
   title,
+  repeat,
   type: ActionNames.ADD,
 });
 
@@ -18,8 +20,8 @@ export const addShucan = (title: string): AddAction => ({
 export interface ShucanState {
   shucan: {
     title: string;
+    repeat: string;
   }[];
-
 }
 
 export type ShucanActions = AddAction;
@@ -30,7 +32,7 @@ function reducer(state: ShucanState = initialState, action: ShucanActions): Shuc
   switch (action.type) {
     case ActionNames.ADD:
       const shucan = state.shucan;
-      shucan.push({ title: action.title });
+      shucan.push({ title: action.title, repeat: action.repeat });
       return { shucan };
     default:
       return state;
