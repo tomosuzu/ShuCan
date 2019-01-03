@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { addShucan, ShucanState } from './Shucan';
+import { addShucan, ShucanState, RepeatType } from './Shucan';
 import { connect } from 'react-redux';
 import { ReduxAction, ReduxState } from '../store';
 import { Dispatch } from 'redux';
@@ -11,7 +11,7 @@ export interface HelloProps {
 
 export interface HelloState {
   title: string;
-  repeat: string;
+  repeat: number;
 }
 
 export class Hello extends React.Component<HelloProps, HelloState> {
@@ -23,7 +23,7 @@ export class Hello extends React.Component<HelloProps, HelloState> {
   }
   public state: HelloState = {
     title: '',
-    repeat: 'once',
+    repeat: RepeatType.once,
   };
 
   private handleChange(event:any) {
@@ -33,6 +33,20 @@ export class Hello extends React.Component<HelloProps, HelloState> {
 
   private save() {
     this.props.actions.addShucan(this.state.title, this.state.repeat);
+  }
+
+  private repeat() {
+    const list = [];
+    for (const i in RepeatType) {
+      if (isNaN(Number(i))) {
+        list.push(
+          <option key={RepeatType[i]} value={RepeatType[i]}>
+            {RepeatType[Number(RepeatType[i])]}
+            </option>,
+        );
+      }
+    }
+    return list;
   }
 
   render() {
@@ -57,10 +71,7 @@ export class Hello extends React.Component<HelloProps, HelloState> {
             onChange={this.handleChange}
             />
           <select name="repeat" value={this.state.repeat} onChange={this.handleChange}>
-            <option value="once">Once</option>
-            <option value="day">Day</option>
-            <option value="week">Week</option>
-            <option value="month">Month</option>
+            {this.repeat()}
           </select>
         </label>
         <button onClick={this.save}/>
@@ -73,7 +84,7 @@ export class Hello extends React.Component<HelloProps, HelloState> {
 class ActionDispatcher {
   constructor(private dispatch: (action: ReduxAction) => void) {}
 
-  public addShucan(title: string, repeat: string) {
+  public addShucan(title: string, repeat: number) {
     this.dispatch(addShucan(title, repeat));
   }
 }

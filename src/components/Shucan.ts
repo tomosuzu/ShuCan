@@ -7,20 +7,29 @@ enum ActionNames {
 
 interface AddAction extends Action {
   title: string;
-  repeat: string;
+  repeat: number;
   type: ActionNames.ADD;
 }
-export const addShucan = (title: string, repeat: string): AddAction => ({
+
+export const addShucan = (title: string, repeat: RepeatType): AddAction => ({
   title,
   repeat,
   type: ActionNames.ADD,
 });
 
+// enum
+export enum RepeatType {
+  once = 0,
+  day = 1,
+  week = 2,
+  month = 3,
+}
+
 // reducer
 export interface ShucanState {
   shucan: {
     title: string;
-    repeat: string;
+    repeat: number;
   }[];
 }
 
