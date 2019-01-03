@@ -11,7 +11,7 @@ export interface HelloProps {
 
 export interface HelloState {
   title: string;
-  repeat: number;
+  repeat: RepeatType;
 }
 
 export class Hello extends React.Component<HelloProps, HelloState> {
@@ -84,7 +84,7 @@ export class Hello extends React.Component<HelloProps, HelloState> {
 class ActionDispatcher {
   constructor(private dispatch: (action: ReduxAction) => void) {}
 
-  public addShucan(title: string, repeat: number) {
+  public addShucan(title: string, repeat: RepeatType) {
     this.dispatch(addShucan(title, repeat));
   }
 }
