@@ -11,6 +11,7 @@ export interface HelloProps {
 
 export interface HelloState {
   title: string;
+  repeat: string;
 }
 
 export class Hello extends React.Component<HelloProps, HelloState> {
@@ -22,20 +23,25 @@ export class Hello extends React.Component<HelloProps, HelloState> {
   }
   public state: HelloState = {
     title: '',
+    repeat: 'once',
   };
 
   private handleChange(event:any) {
-    this.setState({ title: event.target.value });
+    // @ts-ignore
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   private save() {
-    this.props.actions.addShucan(this.state.title);
+    this.props.actions.addShucan(this.state.title, this.state.repeat);
   }
 
   render() {
     const list = [];
     for (const i in this.props.value.shucan) {
-      list.push(<li key={i}>{this.props.value.shucan[i].title}</li>);
+      list.push(
+        <li key={i}>
+          {this.props.value.shucan[i].title} : {this.props.value.shucan[i].repeat}
+        </li>);
     }
 
     return(
@@ -45,10 +51,17 @@ export class Hello extends React.Component<HelloProps, HelloState> {
           Title:
           {this.state.title}
           <input
+            name="title"
             type="text"
             value={this.state.title}
             onChange={this.handleChange}
             />
+          <select name="repeat" value={this.state.repeat} onChange={this.handleChange}>
+            <option value="once">Once</option>
+            <option value="day">Day</option>
+            <option value="week">Week</option>
+            <option value="month">Month</option>
+          </select>
         </label>
         <button onClick={this.save}/>
         {list}
@@ -60,12 +73,12 @@ export class Hello extends React.Component<HelloProps, HelloState> {
 class ActionDispatcher {
   constructor(private dispatch: (action: ReduxAction) => void) {}
 
-  public addShucan(title: string) {
-    this.dispatch(addShucan(title, 'day'));
+  public addShucan(title: string, repeat: string) {
+    this.dispatch(addShucan(title, repeat));
   }
 }
 
 export default connect(
-  (state: ReduxState) => ({ value: state.shucan }),
+  (state: ReduxState) => ({ value: state.Shucan }),
   (dispatch: Dispatch<ReduxAction>) => ({ actions: new ActionDispatcher(dispatch) }),
 )(Hello);

@@ -8,7 +8,7 @@ export default createStore(
 );
 
 export type ReduxState = {
-  shucan : ShucanState,
+  Shucan : ShucanState,
 };
 
 export type ReduxAction = ShucanActions | Action;

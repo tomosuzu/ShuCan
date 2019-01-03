@@ -22,13 +22,19 @@ describe('index', () => {
     wrapper = shallow(<Hello value={state} actions={actions} />);
   });
 
-  test('change state', () => {
-    wrapper.find('input').first().simulate('change', { target: { value: 'value' } });
+  test('change shucan title', () => {
+    wrapper.find('input').first().simulate('change', { target: { name: 'title', value: 'value' } });
     expect(wrapper.state().title).toBe('value');
   });
 
+  test('change shucan repeat', () => {
+    wrapper.find('select').first()
+      .simulate('change', { target: { name: 'repeat', value: 'value' } });
+    expect(wrapper.state().repeat).toBe('value');
+  });
+
   test('save Shucan', () => {
-    wrapper.find('input').first().simulate('change', { target: { value: 'value' } });
+    wrapper.find('input').first().simulate('change', { target: { name: 'title', value: 'value' } });
     wrapper.find('button').first().simulate('click');
     expect(actions.addShucan.calledWith('value')).toBe(true);
   });
