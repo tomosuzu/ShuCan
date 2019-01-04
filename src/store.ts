@@ -1,5 +1,5 @@
 import { createStore, combineReducers, Action } from 'redux';
-import Shucan, { ShucanState, ShucanActions } from './components/Shucan';
+import Shucan, { ShucansState, ShucanActions } from './components/Shucan';
 
 export default createStore(
   combineReducers({
@@ -8,7 +8,7 @@ export default createStore(
 );
 
 export type ReduxState = {
-  Shucan : ShucanState,
+  Shucan : ShucansState,
 };
 
 export type ReduxAction = ShucanActions | Action;

@@ -1,7 +1,7 @@
-import Shucan, { ShucanState, addShucan, RepeatType } from './Shucan';
+import Shucan, { ShucansState, addShucan, RepeatType } from './Shucan';
 
 describe('Shucan', () => {
-  let state: ShucanState;
+  let state: ShucansState;
   beforeEach(() => {
     state = { shucan: [] };
   });

@@ -29,19 +29,21 @@ export enum RepeatType {
 }
 
 // reducer
+export interface ShucansState {
+  shucan: ShucanState[];
+}
+
 export interface ShucanState {
-  shucan: {
-    title: string;
-    repeat: number;
-    endDate?: string;
-  }[];
+  title: string;
+  repeat: number;
+  endDate?: string;
 }
 
 export type ShucanActions = AddAction;
 
-const initialState:ShucanState = { shucan: [] };
+const initialState:ShucansState = { shucan: [] };
 
-function reducer(state: ShucanState = initialState, action: ShucanActions): ShucanState {
+function reducer(state: ShucansState = initialState, action: ShucanActions): ShucansState {
   switch (action.type) {
     case ActionNames.ADD:
       const shucan = state.shucan;

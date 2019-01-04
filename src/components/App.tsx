@@ -1,28 +1,22 @@
 import * as React from 'react';
-import { addShucan, ShucanState, RepeatType } from './Shucan';
+import { addShucan, ShucansState, ShucanState, RepeatType } from './Shucan';
 import { connect } from 'react-redux';
 import { ReduxAction, ReduxState } from '../store';
 import { Dispatch } from 'redux';
 
 export interface HelloProps {
-  value: ShucanState;
+  value: ShucansState;
   actions: ActionDispatcher;
 }
 
-export interface HelloState {
-  title: string;
-  repeat: RepeatType;
-  endDate: string;
-}
-
-export class Hello extends React.Component<HelloProps, HelloState> {
+export class Hello extends React.Component<HelloProps, ShucanState> {
   constructor(props:any) {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
     this.save = this.save.bind(this);
   }
-  public state: HelloState = {
+  public state: ShucanState = {
     title: '',
     repeat: RepeatType.once,
     endDate: '',

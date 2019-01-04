@@ -3,7 +3,7 @@ import * as sinon from 'sinon';
 
 import { shallow } from 'enzyme';
 import { Hello } from './App';
-import { ShucanState, RepeatType } from './Shucan';
+import { ShucansState, RepeatType } from './Shucan';
 
 describe('index', () => {
   let wrapper:any;
@@ -13,7 +13,7 @@ describe('index', () => {
     actions = {
       addShucan: sinon.spy(),
     };
-    const state: ShucanState = {
+    const state: ShucansState = {
       shucan: [
         { title: 'hello1', repeat: RepeatType.day },
         { title: 'hello2', repeat: RepeatType.day },
