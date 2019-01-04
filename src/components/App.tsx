@@ -47,6 +47,7 @@ export class Hello extends React.Component<HelloProps, ShucanState> {
 
   render() {
     const list = [];
+    this.props.value.shucan.sort((a, b) => (a.endDate > b.endDate ? 1 : -1));
     for (const i in this.props.value.shucan) {
       list.push(
         <li key={i}>

@@ -53,3 +53,30 @@ describe('index', () => {
     expect(wrapper.find('li').length).toBe(2);
   });
 });
+
+describe('sort Shucan List', () => {
+  let wrapper:any;
+  let actions:any;
+
+  beforeEach(() => {
+    actions = {
+      addShucan: sinon.spy(),
+    };
+    const state: ShucansState = {
+      shucan: [
+        { title: 'sort1', repeat: RepeatType.day, endDate: '20180101' },
+        { title: 'sort2', repeat: RepeatType.day, endDate: '20181231'  },
+        { title: 'sort3', repeat: RepeatType.day, endDate: '20110101' },
+        { title: 'sort4', repeat: RepeatType.day, endDate: '20171231'  },
+      ],
+    };
+    wrapper = shallow(<Hello value={state} actions={actions} />);
+  });
+
+  test('sort by endDate', () => {
+    expect(wrapper.find('li').at(0).text()).toBe('sort3: 1: 20110101');
+    expect(wrapper.find('li').at(1).text()).toBe('sort4: 1: 20171231');
+    expect(wrapper.find('li').at(2).text()).toBe('sort1: 1: 20180101');
+    expect(wrapper.find('li').at(3).text()).toBe('sort2: 1: 20181231');
+  });
+});
