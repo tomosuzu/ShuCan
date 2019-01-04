@@ -12,6 +12,7 @@ export interface HelloProps {
 export interface HelloState {
   title: string;
   repeat: RepeatType;
+  endDate: string;
 }
 
 export class Hello extends React.Component<HelloProps, HelloState> {
@@ -24,6 +25,7 @@ export class Hello extends React.Component<HelloProps, HelloState> {
   public state: HelloState = {
     title: '',
     repeat: RepeatType.once,
+    endDate: '',
   };
 
   private handleChange(event:any) {
@@ -32,7 +34,7 @@ export class Hello extends React.Component<HelloProps, HelloState> {
   }
 
   private save() {
-    this.props.actions.addShucan(this.state.title, this.state.repeat);
+    this.props.actions.addShucan(this.state.title, this.state.repeat, this.state.endDate);
   }
 
   private repeat() {
@@ -54,7 +56,9 @@ export class Hello extends React.Component<HelloProps, HelloState> {
     for (const i in this.props.value.shucan) {
       list.push(
         <li key={i}>
-          {this.props.value.shucan[i].title} : {this.props.value.shucan[i].repeat}
+          {this.props.value.shucan[i].title}
+          : {this.props.value.shucan[i].repeat}
+          : {this.props.value.shucan[i].endDate}
         </li>);
     }
 
@@ -66,10 +70,18 @@ export class Hello extends React.Component<HelloProps, HelloState> {
           {this.state.title}
           <input
             name="title"
+            className={'title'}
             type="text"
             value={this.state.title}
             onChange={this.handleChange}
             />
+          <input
+            name="endDate"
+            className={'endDate'}
+            type="text"
+            value={this.state.endDate}
+            onChange={this.handleChange}
+          />
           <select name="repeat" value={this.state.repeat} onChange={this.handleChange}>
             {this.repeat()}
           </select>
@@ -84,8 +96,8 @@ export class Hello extends React.Component<HelloProps, HelloState> {
 class ActionDispatcher {
   constructor(private dispatch: (action: ReduxAction) => void) {}
 
-  public addShucan(title: string, repeat: RepeatType) {
-    this.dispatch(addShucan(title, repeat));
+  public addShucan(title: string, repeat: RepeatType, endDate: string) {
+    this.dispatch(addShucan(title, repeat, { endDate }));
   }
 }
 
