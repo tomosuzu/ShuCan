@@ -70,14 +70,12 @@ export class Hello extends React.Component<HelloProps, HelloState> {
           {this.state.title}
           <input
             name="title"
-            className={'title'}
             type="text"
             value={this.state.title}
             onChange={this.handleChange}
             />
           <input
             name="endDate"
-            className={'endDate'}
             type="text"
             value={this.state.endDate}
             onChange={this.handleChange}

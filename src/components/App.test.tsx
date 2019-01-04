@@ -23,7 +23,7 @@ describe('index', () => {
   });
 
   test('change shucan title', () => {
-    wrapper.find('.title').first()
+    wrapper.find('[name="title"]').first()
       .simulate('change', { target: { name: 'title', value: 'value' } });
     expect(wrapper.state().title).toBe('value');
   });
@@ -35,14 +35,14 @@ describe('index', () => {
   });
 
   test('save Shucan', () => {
-    wrapper.find('.title').first()
+    wrapper.find('[name="title"]').first()
       .simulate('change', { target: { name: 'title', value: 'value' } });
     wrapper.find('button').first().simulate('click');
     expect(actions.addShucan.calledWith('value')).toBe(true);
   });
 
   test('save Shucan with endDate', () => {
-    wrapper.find('.endDate').first()
+    wrapper.find('[name="endDate"]').first()
       .simulate('change', { target: { name: 'title', value: 'value2' } });
     wrapper.find('button').first().simulate('click');
     console.log();
