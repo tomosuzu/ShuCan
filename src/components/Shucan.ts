@@ -48,6 +48,8 @@ function reducer(state: ShucansState = initialState, action: ShucanActions): Shu
     case ActionNames.ADD:
       const shucan = state.shucan;
       shucan.push({ title: action.title, repeat: action.repeat, endDate: action.endDate });
+      const obj = JSON.stringify(shucan);
+      localStorage.setItem('Shucan', obj);
       return { shucan };
     default:
       return state;
