@@ -20,6 +20,7 @@ jobs:
     - yarn build
     deploy:
       provider: firebase
+      project: $FIREBASE_PROJECT
       skip_cleanup: true
       token:
         secure: $FIREBASE_TOKEN
