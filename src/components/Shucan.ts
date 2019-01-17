@@ -41,7 +41,8 @@ export interface ShucanState {
 
 export type ShucanActions = AddAction;
 
-const initialState:ShucansState = { shucan: [] };
+// @ts-ignore
+const initialState:ShucansState = { shucan: JSON.parse(localStorage.getItem('Shucan')) || [] };
 
 function reducer(state: ShucansState = initialState, action: ShucanActions): ShucansState {
   switch (action.type) {
