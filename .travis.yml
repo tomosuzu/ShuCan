@@ -23,4 +23,3 @@ jobs:
       skip_cleanup: true
       token:
         secure: $FIREBASE_TOKEN
-      project: $FIREBASE_PROJECT
